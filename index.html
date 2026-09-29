@@ -143,9 +143,18 @@ nav.links a.cta:hover{filter:brightness(1.1)}
   nav.links a.cta{margin:8px 0 0;text-align:center}
   .menu-btn{display:block}
 }
+@media(max-width:360px){
+  header.nav{top:10px;padding:0 10px}
+  .nav-pill{padding:8px 10px}
+  .logo{font-size:.92rem;padding:4px 6px}
+  .menu-btn{padding:7px 11px;font-size:.72rem}
+  nav.links{top:64px;left:10px;right:10px}
+}
 
 /* ================= shared section chrome ================= */
 section{padding:120px 0;position:relative}
+@media(max-width:880px){section{padding:90px 0}}
+@media(max-width:480px){section{padding:70px 0}.wrap{padding:0 18px}}
 .sec-ghost{
   position:absolute;top:26px;left:50%;transform:translateX(-50%);z-index:0;
   font-family:var(--display);font-weight:900;font-size:clamp(4rem,15vw,11.5rem);
@@ -203,6 +212,7 @@ h2.sec-title{
 .hero .wrap{max-width:1600px}
 .hero-grid{display:grid;grid-template-columns:.55fr 1.45fr;gap:60px;align-items:center}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;gap:50px}}
+@media(max-width:480px){.hero{padding:120px 0 60px}}
 .status-chip{
   display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:.76rem;
   color:var(--teal);border:1px solid rgba(94,225,192,.35);border-radius:999px;padding:8px 17px;
@@ -212,8 +222,8 @@ h2.sec-title{
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(94,225,192,.5)}50%{box-shadow:0 0 0 8px rgba(94,225,192,0)}}
 .greet{font-family:var(--mono);font-size:.95rem;color:var(--mist);margin-bottom:18px;display:flex;align-items:center;gap:14px}
 .avatar{
-  width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;
-  border:2px solid rgba(94,225,192,.55);box-shadow:0 0 0 4px rgba(94,225,192,.1),0 8px 24px -8px rgba(94,225,192,.4);
+  width:96px;height:96px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  border:3px solid rgba(94,225,192,.55);box-shadow:0 0 0 5px rgba(94,225,192,.1),0 10px 30px -8px rgba(94,225,192,.45);
 }
 .wave{display:inline-block;transform-origin:70% 70%;animation:wave 2.4s ease-in-out infinite}
 @keyframes wave{0%,60%,100%{transform:rotate(0)}10%,30%{transform:rotate(16deg)}20%,40%{transform:rotate(-8deg)}50%{transform:rotate(10deg)}}
@@ -249,6 +259,14 @@ h1 .w{display:inline-block}
   padding:14px 14px;backdrop-filter:blur(8px);transition:transform .3s var(--ease),border-color .3s;
 }
 @media(max-width:980px){.stats{flex-wrap:wrap}.stat{flex:1 1 calc(50% - 10px)}}
+@media(max-width:480px){
+  .greet{flex-wrap:wrap;gap:12px}
+  .avatar{width:72px;height:72px}
+  .btn-row{gap:12px}
+  .btn{padding:13px 22px;font-size:.9rem;width:100%;justify-content:center}
+  .stat{padding:12px 10px}
+  .stat b{font-size:1.25rem}
+}
 .stat:hover{transform:translateY(-4px);border-color:rgba(94,225,192,.4)}
 .stat b{font-family:var(--display);font-size:1.5rem;font-weight:800;display:block;letter-spacing:-.02em;line-height:1.2}
 .stat b span{color:var(--teal)}
@@ -292,6 +310,10 @@ h1 .w{display:inline-block}
   border-top:1px solid var(--edge);padding-top:12px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;
 }
 .pipeline-foot b{color:var(--teal);font-weight:500}
+@media(max-width:480px){
+  .pipeline-card{padding:22px 18px 18px}
+  .pipeline-foot{font-size:.64rem;gap:8px 14px}
+}
 
 /* ================= marquee ================= */
 .marquee{border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);background:rgba(255,255,255,.015);overflow:hidden;padding:0;position:relative;z-index:2}
@@ -314,6 +336,7 @@ h1 .w{display:inline-block}
 @media(max-width:980px){.svc-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.svc-grid{grid-template-columns:1fr}}
 .svc{padding:28px 26px;transition:transform .35s var(--ease);will-change:transform}
+@media(max-width:480px){.svc{padding:22px 20px}}
 .svc .icon{
   width:48px;height:48px;border-radius:13px;display:grid;place-items:center;margin-bottom:20px;
   background:rgba(94,225,192,.1);font-size:1.25rem;
@@ -331,19 +354,38 @@ h1 .w{display:inline-block}
 
 /* ================= work ================= */
 .work-list{display:grid;gap:26px;position:relative;z-index:2}
-.work{
-  display:grid;grid-template-columns:1.05fr .95fr;gap:0;overflow:hidden;
-  transition:transform .4s var(--ease);
-}
-.work:nth-child(even){grid-template-columns:.95fr 1.05fr}
+.work{transition:transform .4s var(--ease)}
+.work-top{display:grid;grid-template-columns:1.05fr .95fr;gap:0;overflow:hidden;border-radius:20px 20px 0 0}
+.work:nth-child(even) .work-top{grid-template-columns:.95fr 1.05fr}
 .work:nth-child(even) .work-media{order:2}
-@media(max-width:880px){.work,.work:nth-child(even){grid-template-columns:1fr}.work:nth-child(even) .work-media{order:0}}
-.work-media{position:relative;min-height:280px;overflow:hidden;border-radius:20px 0 0 20px}
+.work:not(.expanded) .work-top{border-radius:20px}
+@media(max-width:880px){.work-top,.work:nth-child(even) .work-top{grid-template-columns:1fr}.work:nth-child(even) .work-media{order:0}}
+.work-media{position:relative;min-height:280px;overflow:hidden;border-radius:20px 0 0 20px;cursor:pointer}
 .work:nth-child(even) .work-media{border-radius:0 20px 20px 0}
-@media(max-width:880px){.work-media,.work:nth-child(even) .work-media{border-radius:20px 20px 0 0;min-height:220px}}
+.work.expanded .work-media,.work.expanded:nth-child(even) .work-media{border-radius:0}
+@media(max-width:880px){.work-media,.work:nth-child(even) .work-media{border-radius:20px 20px 0 0;min-height:220px}.work.expanded .work-media{border-radius:20px 20px 0 0}}
 .work-media .placeholder{position:absolute;inset:0;border-radius:0;border:none;border-right:1.5px dashed rgba(139,123,255,.25)}
 .work-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#fff}
 .work:nth-child(even) .work-media img{object-position:right center}
+.work-media.diagram img{object-fit:contain;object-position:center;background:#0d1220;padding:18px}
+.work-media.diagram{background:#0d1220}
+
+.work-slideshow img.slide{opacity:0;transition:opacity .6s var(--ease);z-index:0}
+.work-slideshow img.slide.active{opacity:1;z-index:1}
+@media(prefers-reduced-motion:reduce){.work-slideshow img.slide{transition:none}}
+.slide-dots{position:absolute;left:0;right:0;bottom:12px;z-index:3;display:flex;justify-content:center;gap:7px;pointer-events:none}
+.slide-dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);transition:background .3s,transform .3s}
+.slide-dots i.active{background:var(--teal);transform:scale(1.3)}
+.slide-label{
+  position:absolute;left:12px;right:12px;bottom:32px;z-index:3;
+  font-family:var(--mono);font-size:.72rem;color:var(--paper);
+  background:rgba(5,7,15,.7);border:1px solid var(--edge);border-radius:8px;
+  padding:6px 12px;text-align:center;backdrop-filter:blur(4px);
+  opacity:0;transform:translateY(4px);transition:opacity .35s var(--ease),transform .35s var(--ease);
+  pointer-events:none;
+}
+.slide-label.show{opacity:1;transform:none}
+@media(max-width:640px){.slide-label{font-size:.66rem;bottom:28px;left:8px;right:8px;padding:5px 10px}}
 .work-media::after{ /* shine sweep */
   content:"";position:absolute;top:0;left:-80%;width:55%;height:100%;z-index:2;
   background:linear-gradient(105deg,transparent,rgba(255,255,255,.06),transparent);
@@ -351,6 +393,7 @@ h1 .w{display:inline-block}
 }
 .work:hover .work-media::after{left:130%}
 .work-body{padding:32px 34px;display:flex;flex-direction:column;gap:14px}
+@media(max-width:480px){.work-body{padding:22px 20px}}
 .work-num{
   font-family:var(--display);font-weight:900;font-size:.85rem;color:transparent;
   -webkit-text-stroke:1px rgba(94,225,192,.6);letter-spacing:.1em;
@@ -367,6 +410,66 @@ h1 .w{display:inline-block}
 .chip:hover{transform:translateY(-2px);border-color:var(--teal)}
 .work-links{display:flex;gap:18px;font-size:.82rem;font-family:var(--mono)}
 .work-links span{color:var(--dim);text-decoration:line-through dotted}
+.case-toggle{
+  align-self:flex-start;margin-top:4px;font-family:var(--mono);font-size:.78rem;color:var(--teal);
+  background:rgba(94,225,192,.08);border:1px solid rgba(94,225,192,.3);border-radius:999px;
+  padding:8px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  transition:background .2s,border-color .2s;
+}
+.case-toggle:hover{background:rgba(94,225,192,.18);border-color:var(--teal)}
+.case-toggle .arrow{display:inline-block;transition:transform .3s var(--ease)}
+.work.expanded .case-toggle .arrow{transform:rotate(180deg)}
+.case-panel{
+  grid-column:1/-1;overflow:hidden;max-height:0;
+  transition:max-height .5s var(--ease);
+  border-top:1px solid var(--edge);
+}
+.work.expanded .case-panel{max-height:2000px}
+.case-inner{padding:28px 34px 32px;display:grid;gap:22px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:880px){.case-inner{grid-template-columns:1fr;padding:24px 24px 28px}}
+@media(max-width:480px){.case-inner{padding:20px 20px 24px;gap:18px}}
+.case-block h4{
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:10px;
+}
+.case-block p{color:var(--mist);font-size:.9rem;line-height:1.65}
+
+/* ================= lightbox ================= */
+#lightbox{
+  position:fixed;inset:0;z-index:9500;display:none;
+  background:rgba(5,7,15,.92);backdrop-filter:blur(6px);
+  align-items:center;justify-content:center;padding:60px 24px;
+}
+#lightbox.open{display:flex}
+#lightbox .lb-inner{max-width:min(1100px,92vw);max-height:86vh;display:flex;flex-direction:column;gap:14px;align-items:center}
+#lightbox img{max-width:100%;max-height:74vh;border-radius:14px;border:1px solid var(--edge);box-shadow:0 40px 100px -30px rgba(0,0,0,.8);object-fit:contain}
+#lightbox .lb-caption{color:var(--mist);font-size:.88rem;text-align:center;max-width:70ch}
+#lightbox .lb-counter{color:var(--dim);font-size:.72rem;font-family:var(--mono);text-align:center;margin-top:-6px}
+#lightbox .lb-close{
+  position:absolute;top:22px;right:26px;width:44px;height:44px;border-radius:12px;
+  border:1px solid var(--edge);background:rgba(255,255,255,.05);color:var(--paper);
+  font-size:1.2rem;cursor:pointer;transition:border-color .2s,background .2s;
+}
+#lightbox .lb-close:hover{border-color:var(--teal);background:rgba(94,225,192,.1)}
+#lightbox .lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--edge);background:rgba(255,255,255,.05);color:var(--paper);
+  font-size:1.6rem;line-height:1;cursor:pointer;transition:border-color .2s,background .2s,transform .2s;
+  display:flex;align-items:center;justify-content:center;
+}
+#lightbox .lb-nav:hover{border-color:var(--teal);background:rgba(94,225,192,.12)}
+#lightbox .lb-nav:active{transform:translateY(-50%) scale(.92)}
+#lightbox .lb-nav[hidden]{display:none}
+#lightbox .lb-prev{left:20px}
+#lightbox .lb-next{right:20px}
+@media(max-width:640px){
+  #lightbox{padding:80px 16px 24px}
+  #lightbox .lb-close{top:16px;right:16px}
+  #lightbox .lb-nav{width:42px;height:42px;font-size:1.3rem}
+  #lightbox .lb-prev{left:8px}
+  #lightbox .lb-next{right:8px}
+}
+@media(max-width:480px){#lightbox .lb-close{width:38px;height:38px;font-size:1rem}#lightbox img{max-height:64vh}}
 
 /* ================= experience ================= */
 .timeline{position:relative;margin-left:10px;z-index:2}
@@ -374,6 +477,12 @@ h1 .w{display:inline-block}
 .tl-fill{position:absolute;left:0;top:6px;width:2px;height:0;border-radius:2px;background:linear-gradient(var(--teal),var(--violet));box-shadow:0 0 12px rgba(94,225,192,.5)}
 .tl-item{position:relative;padding:0 0 52px 42px}
 .tl-item:last-child{padding-bottom:0}
+@media(max-width:480px){
+  .timeline{margin-left:4px}
+  .tl-item{padding:0 0 40px 30px}
+  .tl-card{padding:20px 18px}
+  .tl-head{flex-direction:column;gap:4px}
+}
 .tl-item::before{
   content:"";position:absolute;left:-6px;top:7px;width:14px;height:14px;border-radius:50%;
   background:var(--void);border:3px solid var(--teal);transition:box-shadow .3s,border-color .3s;
@@ -409,6 +518,7 @@ h1 .w{display:inline-block}
 .cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;position:relative;z-index:2}
 @media(max-width:880px){.cred-grid{grid-template-columns:1fr}}
 .cred-card{padding:28px}
+@media(max-width:480px){.cred-card{padding:20px}}
 .cred-card h3{font-family:var(--display);font-weight:700;font-size:1.05rem;margin-bottom:18px}
 .cred-card ul{list-style:none;display:grid;gap:13px}
 .cred-card li{color:var(--mist);font-size:.92rem;padding-left:28px;position:relative}
@@ -441,6 +551,11 @@ h1 .w{display:inline-block}
   background:radial-gradient(circle,rgba(139,123,255,.16),transparent 65%);pointer-events:none;
 }
 @media(max-width:880px){#contact .contact-card{grid-template-columns:1fr;padding:42px 28px}}
+@media(max-width:480px){
+  #contact .contact-card{padding:30px 20px}
+  #contact .contact-card::after{width:220px;height:220px;right:-90px;top:-90px}
+  .contact-list a{padding:13px 15px;gap:12px}
+}
 #contact h2{font-family:var(--display);font-weight:800;font-size:clamp(1.5rem,3.4vw,2.3rem);letter-spacing:-.02em;margin-bottom:16px;line-height:1.22}
 #contact h2 .grad{background:linear-gradient(90deg,var(--teal),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
 #contact p.lead{color:var(--mist);margin-bottom:28px;max-width:480px}
@@ -467,6 +582,81 @@ footer{padding:38px 0 46px;border-top:1px solid var(--edge);position:relative;z-
 }
 #toTop.show{opacity:1;pointer-events:auto;transform:none}
 #toTop:hover{border-color:var(--teal)}
+@media(max-width:480px){
+  footer{padding:28px 0 34px}
+  #toTop{right:14px;bottom:14px;width:42px;height:42px}
+}
+
+/* ================= bot widget ================= */
+#botLauncher{
+  position:fixed;left:22px;bottom:22px;z-index:390;width:58px;height:58px;border-radius:50%;
+  border:1px solid rgba(94,225,192,.4);background:linear-gradient(140deg,var(--teal),#3ecdaa);
+  color:var(--void);font-size:1.4rem;cursor:pointer;display:grid;place-items:center;
+  box-shadow:0 14px 34px -12px rgba(94,225,192,.6);transition:transform .25s var(--ease),box-shadow .25s;
+}
+#botLauncher:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 18px 40px -12px rgba(94,225,192,.7)}
+#botLauncher .ping{
+  position:absolute;top:-3px;right:-3px;width:14px;height:14px;border-radius:50%;
+  background:var(--amber);border:2px solid var(--void);animation:pulse 2s infinite;
+}
+#botLauncher.hide-ping .ping{display:none}
+#botPanel{
+  position:fixed;left:22px;bottom:92px;z-index:389;width:min(340px,calc(100vw - 44px));
+  max-height:min(520px,calc(100vh - 130px));display:flex;flex-direction:column;
+  background:rgba(9,12,22,.92);border:1px solid var(--edge);border-radius:18px;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 30px 70px -24px rgba(0,0,0,.8);
+  opacity:0;transform:translateY(16px) scale(.97);pointer-events:none;
+  transition:opacity .25s var(--ease),transform .25s var(--ease);
+  overflow:hidden;
+}
+#botPanel.open{opacity:1;transform:none;pointer-events:auto}
+.bot-head{
+  display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--edge);
+  font-family:var(--mono);font-size:.8rem;flex-shrink:0;
+}
+.bot-head .dot2{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite;flex-shrink:0}
+.bot-head b{color:var(--paper)}
+.bot-head span.sub{color:var(--dim);font-size:.68rem;display:block}
+.bot-close{margin-left:auto;background:none;border:none;color:var(--mist);font-size:1rem;cursor:pointer;padding:4px 6px;border-radius:6px}
+.bot-close:hover{color:var(--paper);background:rgba(255,255,255,.06)}
+.bot-log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:120px}
+.bot-log::-webkit-scrollbar{width:6px}
+.bot-log::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:3px}
+.bot-msg{max-width:88%;font-size:.85rem;line-height:1.5;padding:10px 13px;border-radius:12px}
+.bot-msg.bot{background:rgba(94,225,192,.08);border:1px solid rgba(94,225,192,.2);align-self:flex-start;border-bottom-left-radius:4px}
+.bot-msg.user{background:rgba(139,123,255,.14);border:1px solid rgba(139,123,255,.3);align-self:flex-end;border-bottom-right-radius:4px;color:var(--paper)}
+.bot-quick{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px;flex-shrink:0}
+.bot-chip{
+  font-family:var(--mono);font-size:.72rem;color:var(--teal);background:rgba(94,225,192,.08);
+  border:1px solid rgba(94,225,192,.3);border-radius:999px;padding:7px 13px;cursor:pointer;
+  transition:background .2s,border-color .2s;
+}
+.bot-chip:hover{background:rgba(94,225,192,.18);border-color:var(--teal)}
+.bot-chip.fun{color:var(--amber);background:rgba(255,180,84,.08);border-color:rgba(255,180,84,.3)}
+.bot-chip.fun:hover{background:rgba(255,180,84,.18);border-color:var(--amber)}
+
+/* highlight pulse for bot-driven scroll targets */
+.bot-highlight{animation:botPulse 1.6s var(--ease)}
+@keyframes botPulse{
+  0%{box-shadow:0 0 0 0 rgba(94,225,192,.6)}
+  40%{box-shadow:0 0 0 14px rgba(94,225,192,0)}
+  100%{box-shadow:0 0 0 0 rgba(94,225,192,0)}
+}
+
+/* confetti */
+#confettiLayer{position:fixed;inset:0;z-index:9600;pointer-events:none;overflow:hidden}
+.confetti-piece{position:absolute;top:-20px;border-radius:2px;animation:confettiFall linear forwards}
+@keyframes confettiFall{to{transform:translateY(110vh) rotate(540deg);opacity:.2}}
+
+@media(max-width:480px){
+  #botLauncher{left:14px;bottom:14px;width:50px;height:50px;font-size:1.2rem}
+  #botPanel{left:10px;bottom:74px;width:calc(100vw - 20px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .bot-highlight{animation:none}
+  .confetti-piece{animation:none;display:none}
+}
 </style>
 </head>
 <body>
@@ -515,7 +705,7 @@ footer{padding:38px 0 46px;border-top:1px solid var(--edge);position:relative;z-
   <div class="wrap hero-grid">
     <div>
       <span class="status-chip intro" style="--d:.05s"><span class="dot" aria-hidden="true"></span> Available for freelance projects</span>
-      <span class="greet intro" style="--d:.15s"><img class="avatar" src="surya-photo.jpg" alt="Surya" onerror="this.style.display='none'"><span class="wave" aria-hidden="true">👋</span> Hey, I'm Surya —</span>
+      <span class="greet intro" style="--d:.15s"><img class="avatar" src="surya-photo.jpg" alt="Surya" width="842" height="1264" onerror="this.style.display='none'"><span class="wave" aria-hidden="true">👋</span> Hey, I'm Surya —</span>
       <h1 class="hero-title">
         <span class="w intro" style="--d:.25s">I</span>
         <span class="w intro" style="--d:.3s">build</span>
@@ -702,55 +892,136 @@ footer{padding:38px 0 46px;border-top:1px solid var(--edge);position:relative;z-
     <p class="sec-sub reveal">Real things I've shipped and run in production — not tutorial projects. Hover around, everything reacts.</p>
     <div class="work-list">
 
-      <article class="work glass gborder reveal" data-cursor="view">
-        <div class="work-media">
-          <img src="work-extension.png" alt="Form AutoFill Pro Chrome extension showing saved profiles, one-click fill, and key features panel">
+      <article class="work glass gborder reveal">
+        <div class="work-top">
+          <div class="work-media" data-cursor="view" data-lightbox="work-extension.png" data-caption="Form AutoFill Pro Chrome extension showing saved profiles, one-click fill, and key features panel">
+            <img src="work-extension.png" alt="Form AutoFill Pro Chrome extension showing saved profiles, one-click fill, and key features panel" width="1333" height="620">
+          </div>
+          <div class="work-body">
+            <span class="work-num">/ 01</span>
+            <span class="work-kind">Browser Extension · Production</span>
+            <h3>One-Click Form Automation Suite</h3>
+            <p>Built and deployed Chrome extensions for three applications that automate multi-page form filling with a single click — integrated into a centralized system with automatic initialization on launch, a clean UI, real-time error handling, and update notifications.</p>
+            <div class="chips"><span class="chip">Chrome APIs</span><span class="chip">Manifest V3</span><span class="chip">Content Scripts</span><span class="chip">Messaging APIs</span></div>
+            <button class="case-toggle" aria-expanded="false"><span class="txt">View case study</span> <span class="arrow" aria-hidden="true">▾</span></button>
+          </div>
         </div>
-        <div class="work-body">
-          <span class="work-num">/ 01</span>
-          <span class="work-kind">Browser Extension · Production</span>
-          <h3>One-Click Form Automation Suite</h3>
-          <p>Built and deployed Chrome extensions for three applications that automate multi-page form filling with a single click — integrated into a centralized system with automatic initialization on launch, a clean UI, real-time error handling, and update notifications.</p>
-          <div class="chips"><span class="chip">Chrome APIs</span><span class="chip">Manifest V3</span><span class="chip">Content Scripts</span><span class="chip">Messaging APIs</span></div>
-        </div>
-      </article>
-
-      <article class="work glass gborder reveal" data-cursor="view">
-        <div class="work-media">
-          <img src="work-n8n-workflow.png" alt="n8n automation workflow canvas showing the lead generation and publishing pipeline">
-        </div>
-        <div class="work-body">
-          <span class="work-num">/ 02</span>
-          <span class="work-kind">Business Automation · Production</span>
-          <h3>Lead Generation &amp; Publishing Workflows</h3>
-          <p>Designed n8n automation workflows for lead generation integrating email, WhatsApp, and LinkedIn, plus an automated YouTube Shorts publishing pipeline — improving operational efficiency at zero recurring cost.</p>
-          <div class="chips"><span class="chip">n8n</span><span class="chip">WhatsApp API</span><span class="chip">Email</span><span class="chip">LinkedIn</span><span class="chip">YouTube</span></div>
-        </div>
-      </article>
-
-      <article class="work glass gborder reveal" data-cursor="view">
-        <div class="work-media">
-          <img src="work-website.png" alt="Screens from business, landing page, and product website builds showing modern UI design">
-        </div>
-        <div class="work-body">
-          <span class="work-num">/ 03</span>
-          <span class="work-kind">Website Development · Production</span>
-          <h3>Business &amp; Landing Website Builds</h3>
-          <p>Developed responsive business websites and web interfaces using modern frontend technologies with a focus on performance and user experience — static business websites, modern animated websites, premium 3D websites, landing pages, and portfolio &amp; company websites.</p>
-          <div class="chips"><span class="chip">HTML/CSS/JS</span><span class="chip">Responsive UI</span><span class="chip">Animations</span><span class="chip">3D/WebGL</span></div>
+        <div class="case-panel">
+          <div class="case-inner">
+            <div class="case-block">
+              <h4>Problem</h4>
+              <p>Users across three separate applications had to manually re-enter the same data across multi-page forms every time — slow, repetitive, and error-prone at scale.</p>
+            </div>
+            <div class="case-block">
+              <h4>Approach</h4>
+              <p>Built Chrome extensions on Manifest V3 with content and background scripts talking over the messaging APIs, wired into a centralized system that auto-initializes on launch so every app gets the same one-click fill behavior, real-time error handling, and update notifications without separate setup.</p>
+            </div>
+            <div class="case-block">
+              <h4>Result</h4>
+              <p>Multi-page forms now fill in a single click across all three applications, cutting repetitive manual entry and reducing input errors for every user of the centralized system.</p>
+            </div>
+          </div>
         </div>
       </article>
 
-      <article class="work glass gborder reveal" data-cursor="view">
-        <div class="work-media">
-          <img src="work-aws-architecture.png" alt="Architecture diagram of the migration from a DigitalOcean droplet to AWS EKS with VPC, RDS, ElastiCache, S3, and monitoring">
+      <article class="work glass gborder reveal">
+        <div class="work-top">
+          <div class="work-media diagram work-slideshow" data-cursor="view">
+            <img class="slide active" src="work-n8n-workflow.png" alt="n8n automation workflow canvas showing the lead generation pipeline across email, WhatsApp, and LinkedIn" data-caption="Lead generation workflow integrating email, WhatsApp, and LinkedIn" data-label="Lead generation: email + WhatsApp + LinkedIn" width="1457" height="320">
+            <img class="slide" src="work-n8n-youtube.png" alt="n8n workflow that generates content and publishes it to YouTube with guardrails and Telegram approval steps" data-caption="YouTube automation — generates and posts content in one click, with guardrails and Telegram approval" data-label="YouTube automation: 1-click publish + Telegram approval" width="1705" height="551">
+            <img class="slide" src="work-n8n-whatsapp.png" alt="n8n workflow sending WhatsApp invitations for company events and lead generation" data-caption="WhatsApp invitation automation for company events and lead generation" data-label="WhatsApp invitations for company events" width="1596" height="579">
+            <img class="slide" src="work-n8n-linkedin.png" alt="n8n workflow generating and publishing LinkedIn posts automatically" data-caption="Automated LinkedIn post generation and publishing" data-label="Automated LinkedIn post generation" width="1586" height="499">
+            <div class="slide-label"></div>
+            <div class="slide-dots" aria-hidden="true"></div>
+          </div>
+          <div class="work-body">
+            <span class="work-num">/ 02</span>
+            <span class="work-kind">Business Automation · Production</span>
+            <h3>Lead Generation &amp; Publishing Workflows</h3>
+            <p>Designed n8n automation workflows for lead generation integrating email, WhatsApp, and LinkedIn, plus automated YouTube and LinkedIn publishing pipelines — improving operational efficiency at zero recurring cost.</p>
+            <div class="chips"><span class="chip">n8n</span><span class="chip">WhatsApp API</span><span class="chip">Email</span><span class="chip">LinkedIn</span><span class="chip">YouTube</span><span class="chip">Telegram</span></div>
+            <button class="case-toggle" aria-expanded="false"><span class="txt">View case study</span> <span class="arrow" aria-hidden="true">▾</span></button>
+          </div>
         </div>
-        <div class="work-body">
-          <span class="work-num">/ 04</span>
-          <span class="work-kind">Cloud &amp; DevOps · In Progress</span>
-          <h3>DigitalOcean → AWS EKS Migration</h3>
-          <p>Leading migration of multiple applications to AWS EKS: Dockerizing services, building CI/CD pipelines, deploying with high availability and scalability, integrating Trivy &amp; SonarQube security scanning, centralized OpenSearch logging, OpenVPN, and Prometheus / Grafana / CloudWatch dashboards.</p>
-          <div class="chips"><span class="chip">AWS EKS</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Grafana</span><span class="chip">OpenSearch</span></div>
+        <div class="case-panel">
+          <div class="case-inner">
+            <div class="case-block">
+              <h4>Problem</h4>
+              <p>Lead follow-up and content publishing were manual, scattered across email, WhatsApp, LinkedIn, and YouTube — and every new lead, invitation, or video meant repeating the same steps by hand.</p>
+            </div>
+            <div class="case-block">
+              <h4>Approach</h4>
+              <p>Designed n8n workflows that integrate email, WhatsApp, and LinkedIn into a single lead-generation pipeline; a WhatsApp workflow for sending company event invitations; and content pipelines that generate and publish to YouTube and LinkedIn automatically — with guardrails and a Telegram approval step before anything goes live, all on free-tier tooling.</p>
+            </div>
+            <div class="case-block">
+              <h4>Result</h4>
+              <p>Leads get captured and followed up automatically, event invitations go out over WhatsApp without manual sending, and content publishes to YouTube and LinkedIn with a human approval checkpoint in between — all running at zero recurring cost.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work glass gborder reveal">
+        <div class="work-top">
+          <div class="work-media" data-cursor="view" data-lightbox="work-website.png" data-caption="Screens from business, landing page, and product website builds showing modern UI design">
+            <img src="work-website.png" alt="Screens from business, landing page, and product website builds showing modern UI design" width="678" height="637">
+          </div>
+          <div class="work-body">
+            <span class="work-num">/ 03</span>
+            <span class="work-kind">Website Development · Production</span>
+            <h3>Business &amp; Landing Website Builds</h3>
+            <p>Developed responsive business websites and web interfaces using modern frontend technologies with a focus on performance and user experience — static business websites, modern animated websites, premium 3D websites, landing pages, and portfolio &amp; company websites.</p>
+            <div class="chips"><span class="chip">HTML/CSS/JS</span><span class="chip">Responsive UI</span><span class="chip">Animations</span><span class="chip">3D/WebGL</span></div>
+            <button class="case-toggle" aria-expanded="false"><span class="txt">View case study</span> <span class="arrow" aria-hidden="true">▾</span></button>
+          </div>
+        </div>
+        <div class="case-panel">
+          <div class="case-inner">
+            <div class="case-block">
+              <h4>Problem</h4>
+              <p>Clients needed sites ranging from simple static business pages to premium animated and 3D experiences, each with different performance and UX expectations, on tight timelines.</p>
+            </div>
+            <div class="case-block">
+              <h4>Approach</h4>
+              <p>Built each site with modern frontend technologies suited to its scope — from lean static HTML/CSS/JS for business pages up to animated and WebGL-driven builds for premium landing pages — keeping performance and responsive layout as constant priorities regardless of visual complexity.</p>
+            </div>
+            <div class="case-block">
+              <h4>Result</h4>
+              <p>Delivered a spread of production sites — static business sites, animated landing pages, 3D websites, and portfolio/company sites — each responsive and optimized for first-impression conversion.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="work glass gborder reveal">
+        <div class="work-top">
+          <div class="work-media diagram" data-cursor="view" data-lightbox="work-aws-architecture.png" data-caption="Architecture diagram of the migration from a DigitalOcean droplet to AWS EKS with VPC, RDS, ElastiCache, S3, and monitoring">
+            <img src="work-aws-architecture.png" alt="Architecture diagram of the migration from a DigitalOcean droplet to AWS EKS with VPC, RDS, ElastiCache, S3, and monitoring" width="1195" height="300">
+          </div>
+          <div class="work-body">
+            <span class="work-num">/ 04</span>
+            <span class="work-kind">Cloud &amp; DevOps · In Progress</span>
+            <h3>DigitalOcean → AWS EKS Migration</h3>
+            <p>Leading migration of multiple applications to AWS EKS: Dockerizing services, building CI/CD pipelines, deploying with high availability and scalability, integrating Trivy &amp; SonarQube security scanning, centralized OpenSearch logging, OpenVPN, and Prometheus / Grafana / CloudWatch dashboards.</p>
+            <div class="chips"><span class="chip">AWS EKS</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Grafana</span><span class="chip">OpenSearch</span></div>
+            <button class="case-toggle" aria-expanded="false"><span class="txt">View case study</span> <span class="arrow" aria-hidden="true">▾</span></button>
+          </div>
+        </div>
+        <div class="case-panel">
+          <div class="case-inner">
+            <div class="case-block">
+              <h4>Problem</h4>
+              <p>Multiple applications were running on a single DigitalOcean droplet — a setup that limits high availability, scalability, and the security/observability tooling a growing product needs.</p>
+            </div>
+            <div class="case-block">
+              <h4>Approach</h4>
+              <p>Leading the migration to AWS EKS: Dockerizing each service, building CI/CD pipelines around them, and standing up supporting infrastructure — VPC, RDS, ElastiCache, and S3 — alongside Trivy and SonarQube security scanning, OpenVPN access, centralized OpenSearch logging, and Prometheus/Grafana/CloudWatch monitoring.</p>
+            </div>
+            <div class="case-block">
+              <h4>Result</h4>
+              <p>In progress: moving toward a highly-available, horizontally scalable deployment with centralized logging, security scanning, and real-time monitoring in place of a single point of failure.</p>
+            </div>
+          </div>
         </div>
       </article>
 
@@ -941,12 +1212,38 @@ footer{padding:38px 0 46px;border-top:1px solid var(--edge);position:relative;z-
 
 <footer>
   <div class="wrap foot-inner">
-    <span>© <span id="year"></span> K Surya · Software Engineer | Automation Engineer | Freelance Website Developer</span>
+    <span>© <span id="year"></span> K Surya · <span id="footRoles">Software Engineer | Automation Engineer | Freelance Website Developer</span></span>
     <span class="mono">Hyderabad, India · working with clients everywhere — p.s. this site is also a work sample 😉</span>
   </div>
 </footer>
 
 <button id="toTop" aria-label="Back to top">↑</button>
+
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+  <button class="lb-close" id="lbClose" aria-label="Close image preview">✕</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous image">‹</button>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next image">›</button>
+  <div class="lb-inner">
+    <img id="lbImg" src="" alt="">
+    <p class="lb-caption" id="lbCaption"></p>
+    <p class="lb-counter" id="lbCounter"></p>
+  </div>
+</div>
+
+<div id="confettiLayer" aria-hidden="true"></div>
+
+<button id="botLauncher" aria-haspopup="dialog" aria-expanded="false" aria-controls="botPanel" aria-label="Open Surya's site guide">
+  🤖<span class="ping" aria-hidden="true"></span>
+</button>
+<div id="botPanel" role="dialog" aria-modal="false" aria-label="Site guide chat" aria-hidden="true">
+  <div class="bot-head">
+    <span class="dot2" aria-hidden="true"></span>
+    <span><b>Pixel</b><span class="sub">Surya's site guide · will click things for you</span></span>
+    <button class="bot-close" id="botClose" aria-label="Close chat">✕</button>
+  </div>
+  <div class="bot-log" id="botLog" aria-live="polite"></div>
+  <div class="bot-quick" id="botQuick"></div>
+</div>
 
 <script>
 (function(){
@@ -1060,6 +1357,8 @@ const coarse=window.matchMedia('(hover: none)').matches;
 (function(){
   const roles=["Software Engineer","Automation Engineer","Freelance Website Developer","AI Agent Builder","Cloud & DevOps Engineer"];
   const el=document.getElementById('roleText');
+  const footRoles=document.getElementById('footRoles');
+  if(footRoles)footRoles.textContent=roles.slice(0,3).join(' | ');
   if(reduced){el.textContent=roles.join(' · ');return;}
   let ri=0,ci=0,del=false;
   (function tick(){
@@ -1089,12 +1388,12 @@ const coarse=window.matchMedia('(hover: none)').matches;
 
 /* ================= counters ================= */
 (function(){
-  const targets=[['statYears',2],['statAuto',10],['statAcc',95],['statProb',50]];
+  const ids=['statYears','statAuto','statAcc','statProb'];
   if(reduced)return;
   const io=new IntersectionObserver(es=>{
     if(!es[0].isIntersecting)return;io.disconnect();
-    targets.forEach(([id,end])=>{
-      const el=document.getElementById(id);let cur=0;
+    ids.forEach(id=>{
+      const el=document.getElementById(id);const end=parseInt(el.textContent,10)||0;let cur=0;
       const step=Math.max(1,Math.round(end/40));
       const t=setInterval(()=>{cur+=step;if(cur>=end){cur=end;clearInterval(t);}el.textContent=cur;},32);
     });
@@ -1156,6 +1455,146 @@ const coarse=window.matchMedia('(hover: none)').matches;
   });
 })();
 
+/* ================= work image lightbox ================= */
+(function(){
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lbImg');
+  const lbCaption=document.getElementById('lbCaption');
+  const lbCounter=document.getElementById('lbCounter');
+  const lbClose=document.getElementById('lbClose');
+  const lbPrev=document.getElementById('lbPrev');
+  const lbNext=document.getElementById('lbNext');
+  if(!lb)return;
+  let lastFocus=null,gallery=[],galIdx=0;
+
+  function render(){
+    const item=gallery[galIdx];
+    lbImg.src=item.src;lbImg.alt=item.caption||'';
+    lbCaption.textContent=item.caption||'';
+    const multi=gallery.length>1;
+    lbPrev.hidden=lbNext.hidden=!multi;
+    lbCounter.textContent=multi?(galIdx+1)+' / '+gallery.length:'';
+  }
+  function open(items,startIdx){
+    lastFocus=document.activeElement;
+    gallery=items;galIdx=startIdx||0;
+    render();
+    lb.classList.add('open');
+    document.body.style.overflow='hidden';
+    lbClose.focus();
+  }
+  function close(){
+    lb.classList.remove('open');
+    document.body.style.overflow='';
+    lbImg.src='';
+    if(lastFocus)lastFocus.focus();
+  }
+  function prev(){galIdx=(galIdx-1+gallery.length)%gallery.length;render();}
+  function next(){galIdx=(galIdx+1)%gallery.length;render();}
+
+  document.querySelectorAll('.work-media[data-lightbox]').forEach(media=>{
+    media.setAttribute('role','button');
+    media.setAttribute('tabindex','0');
+    media.setAttribute('aria-label','View full-size image');
+    const items=[{src:media.dataset.lightbox,caption:media.dataset.caption}];
+    media.addEventListener('click',()=>open(items,0));
+    media.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();open(items,0);}
+    });
+  });
+  document.querySelectorAll('.work-slideshow').forEach(media=>{
+    media.setAttribute('role','button');
+    media.setAttribute('tabindex','0');
+    media.setAttribute('aria-label','View full-size image gallery');
+    const slides=[...media.querySelectorAll('.slide')];
+    const items=slides.map(s=>({src:s.src,caption:s.dataset.caption||s.alt}));
+    function openAtActive(){
+      const activeIdx=slides.findIndex(s=>s.classList.contains('active'));
+      open(items,Math.max(0,activeIdx));
+    }
+    media.addEventListener('click',openAtActive);
+    media.addEventListener('keydown',e=>{
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();openAtActive();}
+    });
+  });
+  lbClose.addEventListener('click',close);
+  lbPrev.addEventListener('click',prev);
+  lbNext.addEventListener('click',next);
+  lb.addEventListener('click',e=>{if(e.target===lb)close();});
+  addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowLeft'&&gallery.length>1)prev();
+    else if(e.key==='ArrowRight'&&gallery.length>1)next();
+  });
+  window.__openLightbox=(src,caption)=>open([{src,caption}],0);
+})();
+
+/* ================= work image slideshow ================= */
+(function(){
+  document.querySelectorAll('.work-slideshow').forEach(media=>{
+    const slides=[...media.querySelectorAll('.slide')];
+    if(slides.length<2)return;
+    const dotsWrap=media.querySelector('.slide-dots');
+    slides.forEach((_,i)=>{
+      const dot=document.createElement('i');
+      if(i===0)dot.classList.add('active');
+      dotsWrap.appendChild(dot);
+    });
+    const dots=[...dotsWrap.children];
+    const label=media.querySelector('.slide-label');
+    let idx=0,timer=null;
+    function updateLabel(){
+      if(!label)return;
+      label.classList.remove('show');
+      clearTimeout(label._t);
+      label._t=setTimeout(()=>{
+        label.textContent=slides[idx].dataset.label||slides[idx].dataset.caption||'';
+        label.classList.add('show');
+      },180);
+    }
+    function show(next){
+      slides[idx].classList.remove('active');
+      dots[idx].classList.remove('active');
+      idx=next;
+      slides[idx].classList.add('active');
+      dots[idx].classList.add('active');
+      updateLabel();
+    }
+    updateLabel();
+    function start(){
+      if(reduced)return;
+      stop();
+      timer=setInterval(()=>show((idx+1)%slides.length),3600);
+    }
+    function stop(){clearInterval(timer);}
+    start();
+    media.addEventListener('mouseenter',stop);
+    media.addEventListener('mouseleave',start);
+  });
+})();
+
+/* ================= work case-study toggles ================= */
+(function(){
+  function setExpanded(card,open){
+    card.classList.toggle('expanded',open);
+    const btn=card.querySelector('.case-toggle');
+    btn.setAttribute('aria-expanded',open);
+    btn.querySelector('.txt').textContent=open?'Hide case study':'View case study';
+    if(!open){
+      const top=card.getBoundingClientRect().top+scrollY-110;
+      if(scrollY>top)scrollTo({top,behavior:reduced?'auto':'smooth'});
+    }
+  }
+  document.querySelectorAll('.case-toggle').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const card=btn.closest('.work');
+      setExpanded(card,!card.classList.contains('expanded'));
+    });
+  });
+  window.__expandCaseStudy=setExpanded;
+})();
+
 /* ================= magnetic buttons ================= */
 (function(){
   if(reduced||coarse)return;
@@ -1214,6 +1653,158 @@ const coarse=window.matchMedia('(hover: none)').matches;
     });
     card.addEventListener('mouseleave',()=>{card.style.transform='';});
   });
+})();
+
+/* ================= confetti (bot easter egg) ================= */
+function fireConfetti(){
+  if(reduced)return;
+  const layer=document.getElementById('confettiLayer');
+  const colors=['#5ee1c0','#8b7bff','#ffb454','#ff6b6b','#f2f5fb'];
+  for(let i=0;i<70;i++){
+    const p=document.createElement('i');
+    const size=Math.random()*7+5;
+    p.className='confetti-piece';
+    p.style.left=Math.random()*100+'vw';
+    p.style.width=size+'px';p.style.height=size*.4+'px';
+    p.style.background=colors[Math.floor(Math.random()*colors.length)];
+    p.style.animationDuration=(Math.random()*1.6+2.2)+'s';
+    p.style.animationDelay=(Math.random()*.4)+'s';
+    p.style.transform='rotate('+Math.floor(Math.random()*360)+'deg)';
+    layer.appendChild(p);
+    setTimeout(()=>p.remove(),4200);
+  }
+}
+
+/* ================= bot widget ================= */
+(function(){
+  const launcher=document.getElementById('botLauncher');
+  const panel=document.getElementById('botPanel');
+  const closeBtn=document.getElementById('botClose');
+  const log=document.getElementById('botLog');
+  const quick=document.getElementById('botQuick');
+  if(!launcher||!panel)return;
+
+  function addMsg(text,who){
+    const div=document.createElement('div');
+    div.className='bot-msg '+who;
+    div.textContent=text;
+    log.appendChild(div);
+    log.scrollTop=log.scrollHeight;
+  }
+  function say(text){addMsg(text,'bot');}
+  function userSaid(text){addMsg(text,'user');}
+
+  function setQuick(options){
+    quick.innerHTML='';
+    options.forEach(opt=>{
+      const b=document.createElement('button');
+      b.className='bot-chip'+(opt.fun?' fun':'');
+      b.textContent=opt.label;
+      b.addEventListener('click',()=>{userSaid(opt.label);opt.run();});
+      quick.appendChild(b);
+    });
+  }
+
+  function highlight(el){
+    el.classList.remove('bot-highlight');
+    void el.offsetWidth;
+    el.classList.add('bot-highlight');
+  }
+
+  function goTo(selector,label){
+    const el=document.querySelector(selector);
+    if(!el){say("Hmm, couldn't find that section. Weird.");return;}
+    say('On it — jumping to '+label+' →');
+    setTimeout(()=>{
+      el.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+      setTimeout(()=>highlight(el.closest('section')||el),reduced?0:450);
+    },250);
+  }
+
+  function showWork(index,label){
+    const cards=document.querySelectorAll('.work');
+    const card=cards[index];
+    if(!card){say("That project's playing hide and seek. Can't find it.");return;}
+    say('Pulling up '+label+'…');
+    setTimeout(()=>{
+      card.scrollIntoView({behavior:reduced?'auto':'smooth',block:'center'});
+      setTimeout(()=>{
+        highlight(card);
+        const media=card.querySelector('.work-media');
+        if(media&&window.__openLightbox)window.__openLightbox(media.dataset.lightbox,media.dataset.caption);
+      },reduced?0:500);
+    },250);
+  }
+
+  function explainWork(index,label){
+    const cards=document.querySelectorAll('.work');
+    const card=cards[index];
+    if(!card){say("Can't find that one right now.");return;}
+    say('Here\'s the full case study for '+label+' — problem, approach, result.');
+    setTimeout(()=>{
+      card.scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'});
+      setTimeout(()=>{
+        if(window.__expandCaseStudy)window.__expandCaseStudy(card,true);
+        highlight(card);
+      },reduced?0:450);
+    },250);
+  }
+
+  function explainStats(){
+    say('Quick read: 2+ years professional engineering, 10+ automations shipped into production, a 95% peak model accuracy on an ML project, and 50+ coding problems solved. Numbers, not vibes.');
+    goTo('#top','the top');
+  }
+
+  function mainMenu(){
+    setQuick([
+      {label:'👀 Show me the work',run:()=>{say("Got 4 shipped projects. Which one?");setQuick([
+        {label:'Chrome extension',run:()=>showWork(0,'the Chrome extension project')},
+        {label:'n8n workflows',run:()=>showWork(1,'the n8n automation project')},
+        {label:'Website builds',run:()=>showWork(2,'the website builds')},
+        {label:'AWS migration',run:()=>showWork(3,'the AWS EKS migration')},
+        {label:'← back',run:mainMenu},
+      ]);}},
+      {label:'📖 Explain a case study',run:()=>{say('Pick one and I\'ll open the full breakdown:');setQuick([
+        {label:'Chrome extension',run:()=>explainWork(0,'the Chrome extension project')},
+        {label:'n8n workflows',run:()=>explainWork(1,'the n8n automation project')},
+        {label:'Website builds',run:()=>explainWork(2,'the website builds')},
+        {label:'AWS migration',run:()=>explainWork(3,'the AWS EKS migration')},
+        {label:'← back',run:mainMenu},
+      ]);}},
+      {label:'📊 Explain the stats',run:explainStats},
+      {label:'🧰 Skills',run:()=>{say('Jumping to the toolkit.');goTo('#skills','the skills section');}},
+      {label:'🧭 Experience',run:()=>{say('Here\'s the career timeline.');goTo('#experience','the experience timeline');}},
+      {label:'🏆 Credentials',run:()=>{say('Certs, achievements, education — all here.');goTo('#credentials','the credentials section');}},
+      {label:'✉️ Contact Surya',run:()=>{say('Say hi here — email, WhatsApp, or call.');goTo('#contact','the contact section');}},
+      {label:'🎉 Surprise me',fun:true,run:()=>{
+        say(['Confetti time!','You asked for it 🎊','Warning: pure chaos ahead'][Math.floor(Math.random()*3)]);
+        fireConfetti();
+        setTimeout(mainMenu,900);
+      }},
+    ]);
+  }
+
+  function openPanel(){
+    panel.classList.add('open');
+    panel.setAttribute('aria-hidden','false');
+    launcher.setAttribute('aria-expanded','true');
+    launcher.classList.add('hide-ping');
+    if(!log.childElementCount){
+      say("Hey — I'm Pixel 👋 I can jump around this site for you: open project images, expand case studies, explain the stats, or just cause some confetti chaos. What do you want to see?");
+      mainMenu();
+    }
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+    launcher.setAttribute('aria-expanded','false');
+  }
+
+  launcher.addEventListener('click',()=>{
+    if(panel.classList.contains('open'))closePanel();else openPanel();
+  });
+  closeBtn.addEventListener('click',closePanel);
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open'))closePanel();});
 })();
 
 document.getElementById('year').textContent=new Date().getFullYear();
